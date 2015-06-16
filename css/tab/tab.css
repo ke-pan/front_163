@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  font: 14px "微软雅黑";
+  border: 1px solid #999;
+  margin: 20px;
+  width: 572px;
+}
+.navs {
+  list-style: none;
+  text-align: center;
+}
+.navs li {
+  display: block;
+  float: left;
+  width: 190px;
+  background: #f1f1f1;
+  border-right: 1px solid #cecece;
+  border-bottom: 1px solid #cecece;
+}
+.navs li:last-child {
+  border-right: 0;
+}
+.navs li.active {
+  border-bottom: 0;
+  background: white;
+}
+.content {
+  padding: 20px;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+}
