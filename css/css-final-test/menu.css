@@ -1,0 +1,35 @@
+.container {
+  color: black;
+  font: 12px "宋体";
+}
+
+.button {
+  border: 1px solid #ddd;
+  height: 28px;
+  width: 50px;
+  line-height: 28px;
+  text-align: center;
+  background-color: #eee;
+}
+
+.menu {
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  display: inline-block;
+  margin-top: 1px;
+
+}
+
+.item {
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  height: 30px;
+  line-height: 30px;
+  background-color: white;
+  padding: 0 10px;
+}
+
+.item:hover {
+  background-color: #ddd;
+}

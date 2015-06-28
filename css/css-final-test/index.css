@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  position: relative;
+  margin: auto;
+  width: 350px;
+}
+
+.side {
+  width: 100px;
+  height: 100px;
+}
+.side img{
+  width: 100px;
+  height: 100px;
+}
+
+.main {
+  position: absolute;
+  left: 110px;
+  top: 0px;
+  right: 0px;
+  height: 100px;
+}
+
+.main h1 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: black;
+  font: bold 16px/25px "宋体"
+}
+
+.main p {
+  overflow: hidden;
+  height: 75px;
+  color: #666;
+  font: 14px/25px "宋体"
+}

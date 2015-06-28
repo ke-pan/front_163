@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>homework1</title>
+    <style media="screen">
+      .parent {
+        width: 810px;
+        margin: auto;
+        text-align: center;
+        color: white;
+      }
+      .side {
+        width: 200px;
+        float: left;
+        background: blue;
+        margin-right: 10px;
+      }
+      .main {
+        width: 600px;
+        float: left;
+        background: red;
+      }
+      .parent::after {
+        content: '.';
+        visibility: hidden;
+        overflow: hidden;
+        display: block;
+        clear: both;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="parent">
+      <div class="side">侧栏</div>
+      <div class="main">主栏</div>
+  </div>
+  </body>
+</html>
