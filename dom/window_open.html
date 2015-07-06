@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>open window</title>
+  </head>
+  <body>
+    <h3 onclick="openWindow()">点击打开一个新窗口，5秒钟后关闭</h3>
+    <script type="text/javascript">
+      function openWindow() {
+        var subwin = window.open('http://www.163.com', 'subwindow', 'status=yes,toolbar=yes,resizable=yes,height=600,width=600');
+        setTimeout(function(){
+          subwin.close();
+        }, 5000);
+      }
+    </script>
+  </body>
+</html>
