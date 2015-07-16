@@ -1,0 +1,102 @@
+<select name="year" id="year">
+    <option value="0">--</option>
+    <option value="1999">1999</option>
+    <option value="2000">2000</option>
+    <option value="2001">2001</option>
+</select>年
+<select name="month" id="month">
+    <option value="0">--</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+</select>月
+<select name="date" id="date">
+    <option value="0">--</option>
+</select>日
+<script type="text/javascript">
+  var yearSelection = document.getElementById('year');
+  var monthSelection = document.getElementById('month');
+  var dateSelection = document.getElementById('date');
+
+  function leapYear(year){
+    if(year % 100 == 0) {
+      return year % 400 == 0;
+    } else {
+      return year % 4 == 0;
+    }
+  };
+
+  function fillSelection(selectElement, num) {
+    var i;
+    var oldValue = Number(selectElement.value);
+    for(i=selectElement.options.length-1; i>=0; i--) {
+      selectElement.remove(selectElement.options[i]);
+    }
+    var option;
+    if(num == 0) {
+      option = new Option('--', 0);
+      selectElement.add(option);
+    } else {
+      for(i=1; i<=num; i++) {
+        option = new Option(i, i);
+        selectElement.add(option);
+      }
+      if(oldValue > 0 && oldValue <= num) {
+        selectElement.value = oldValue;
+      } else {
+        selectElement.value = 1;
+      }
+    }
+  }
+
+  yearSelection.addEventListener('change', function(e){
+    if(e.target.value == '0') {
+      monthSelection.value = '0';
+    }
+    var e = new Event("change");
+    monthSelection.dispatchEvent(e);
+  });
+
+  monthSelection.addEventListener('change', function(e){
+    if(yearSelection.value == '0') {
+      fillSelection(dateSelection, 0)
+      return;
+    }
+    switch (e.target.value) {
+      case '0':
+        fillSelection(dateSelection, 0);
+        break;
+      case '2':
+        if(leapYear(parseInt(yearSelection.value))) {
+          fillSelection(dateSelection, 29);
+        } else {
+          fillSelection(dateSelection, 28);
+        }
+        break;
+      case '1':
+      case '3':
+      case '5':
+      case '7':
+      case '8':
+      case '10':
+      case '12':
+        fillSelection(dateSelection, 31);
+        break;
+      default:
+        fillSelection(dateSelection, 30);
+        break;
+    }
+  });
+
+
+
+</script>
