@@ -20,6 +20,13 @@
         background-color: red;
         overflow: auto; /* 除了visible, 都触发 BFC 模式，不受浮动影响，使环绕消失 */
       }
+
+      /* 伪等高的效果实现，比 flex，table 兼容性好 */
+      .parent { overflow: hidden; /* 截掉超出的背景色 */ }
+      .side,.mian {
+        padding-bottom: 9999px; /* 把背景色往下延伸 */
+        margin-bottom: -9999px; /* 抵消掉padding-bottom */
+      }
     </style>
   </head>
   <body>
