@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>inline block</title>
+    <style media="screen">
+      .parent {
+        background-color: red;
+        text-align: center; /* 居中 */
+      }
+      .content {
+        background-color: blue;
+        display: inline-block; /* 让宽度等于内容宽度；IE7 不支持，但是很容易实现 */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 优点：兼容性高； -->
+    <!-- 缺点：content 继承了 text-align center 的属性，可能需要再设置 -->
+    <div class="parent">
+      <div class="content">
+        Content
+      </div>
+    </div>
+  </body>
+</html>

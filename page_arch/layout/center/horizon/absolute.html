@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>inline block</title>
+    <style media="screen">
+      .parent {
+        background-color: red;
+        position: relative;
+      }
+      .content {
+        background-color: blue;
+        position: absolute; /* 宽度等于内容 */
+        left: 50%; /* 居中 */
+        transform: translateX(-50%); /* 调整居中 */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 优点：脱离文档流，不会影响其他元素 -->
+    <!-- 缺点：兼容性 不兼容IE6/7/8, 高版本可能要加前缀 -->
+    <div class="parent">
+      <div class="content">
+        Content
+      </div>
+    </div>
+  </body>
+</html>

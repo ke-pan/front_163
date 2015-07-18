@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>inline block</title>
+    <style media="screen">
+      .parent {
+        background-color: red;
+      }
+      .content {
+        background-color: blue;
+        display: table; /* 让宽度等于内容宽度； */
+        margin: 0 auto; /* 居中 */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 优点：只设置child；IE8 以上支持， -->
+    <!-- 缺点：需要用 table 结构支持 IE6/7 -->
+    <div class="parent">
+      <div class="content">
+        Content
+      </div>
+    </div>
+  </body>
+</html>
