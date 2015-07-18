@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="等分布局, 中间有20px间隔">
+    <title>float</title>
+    <style media="screen">
+      .container {
+        width: 600px;
+        height: 400px;
+        border: 5px dashed black;
+      }
+      .parent {
+        margin-left: -20px; /* 扩大，把间隔算进去 */
+      }
+      .column {
+        background-color: #ccc;
+        background-clip: content-box;
+        float: left;
+        width: 25%; /* 等分, 在IE7以下有浮点数问题；强耦合，改变列数需要改变这个值 */
+        padding-left: 20px; /* 间距 */
+        box-sizing: border-box; /*改变宽度的算法，把padding也计算在内*/
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="parent">
+        <div class="column"> <div class="content">Demo</div> </div>
+        <div class="column"> <div class="content">Demo</div> </div>
+        <div class="column"> <div class="content">Demo</div> </div>
+        <div class="column"> <div class="content">Demo</div> </div>
+      </div>
+    </div>
+  </body>
+</html>
