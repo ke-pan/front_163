@@ -2,23 +2,24 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>table</title>
+    <title>table cell</title>
     <style media="screen">
       .parent {
         background-color: red;
+        height: 300px;
+        display: table-cell; /* 使支持 vertical-align */
+        vertical-align: middle; /* 居中 */
       }
-      .content {
+      .child {
         background-color: blue;
-        display: table; /* 让宽度等于内容宽度； */
-        margin: 0 auto; /* 居中 */
       }
     </style>
   </head>
   <body>
-    <!-- 优点：只设置child；IE8 以上支持， -->
+    <!-- 优点：只设置parent；IE8 以上支持， -->
     <!-- 缺点：需要用 table 结构支持 IE6/7 -->
     <div class="parent">
-      <div class="content">
+      <div class="child">
         Content
       </div>
     </div>

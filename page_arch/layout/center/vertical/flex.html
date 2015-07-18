@@ -6,20 +6,20 @@
     <style media="screen">
       .parent {
         background-color: red;
-        display: flex; /* 让子元素成为flex-item, 宽度等于内容宽度； */
-        justify-content: center; /* 居中 */
+        height: 300px;
+        display: flex; /* 子元素成为 flex-item */
+        align-items: center; /* 居中 */
       }
-      .content {
+      .child {
         background-color: blue;
-        /*margin: 0 auto;*/
       }
     </style>
   </head>
   <body>
-    <!-- 优点：只需要设置 parent -->
-    <!-- 缺点：兼容性 不兼容IE6/7/8-->
+    <!-- 优点：只设置 parent -->
+    <!-- 缺点：兼容性 -->
     <div class="parent">
-      <div class="content">
+      <div class="child">
         Content
       </div>
     </div>
