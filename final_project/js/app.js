@@ -10,13 +10,14 @@
                 this.psize + '&type=' + this.type;
         }
     };
-    var pages = document.getElementsByClassName('page');
+    var pagination = document.getElementById('pagination');
+    var nextPage = pagination.getElementsByClassName('next')[0];
+    var previousPage = pagination.getElementsByClassName('prev')[0];
     var mask = document.getElementById('mask');
     var login = document.getElementById('login');
     var follow = document.getElementById('follow');
     var followed = document.getElementById('followed');
-
-    // var curruentPage = 1;
+    var currentPage, totalPage;
 
     function slideEasein(slide) {
         slide.style.opacity = 0;
@@ -110,8 +111,7 @@
         }, 5000);
     }
 
-    function createCoursesDOM(jsonLiked) {
-        var json = JSON.parse(jsonLiked);
+    function createCoursesDOM(json) {
         var courses = document.getElementById('contents');
         var list = courses.getElementsByTagName('ul')[0];
         courses.removeChild(list);
@@ -163,23 +163,49 @@
         courses.appendChild(list);
     }
 
+    function drawPagination(json) {
+        currentPage = json.pagination.pageIndex;
+        totalPage = json.pagination.totlePageCount;
+        var pages = pagination.getElementsByClassName('page')[0];
+        pagination.removeChild(pages);
+        pages = document.createElement('div');
+        pages.className = 'page';
+        for (var i = 1; i < totalPage + 1; i++) {
+            var div = document.createElement('div');
+            if (i == currentPage) {
+                div.className = 'active';
+            }
+            div.textContent = i;
+            pages.appendChild(div);
+        }
+        pagination.insertBefore(pages, nextPage);
+    }
+
     function jumpToPage(n) {
         courseURL.pageNo = n;
         AjaxGet(courseURL.urlWithParams(), function(r) {
-            createCoursesDOM(r);
-        })
-        removeClass(pages, 'active');
-        addClass(pages[n - 1], 'active');
+            var json = JSON.parse(r);
+            createCoursesDOM(json);
+            drawPagination(json);
+        });
     }
 
     function bindPage() {
-        for (var i = 0; i < pages.length; i++) {
-            (function(n) {
-                pages[n].addEventListener('click', function() {
-                    jumpToPage(n + 1);
-                })
-            })(i)
-        }
+        pagination.addEventListener('click', function(e) {
+            if (e.target.className == 'prev') {
+                if (currentPage > 1) {
+                    jumpToPage(currentPage - 1)
+                }
+            }
+            else if (e.target.className == 'next') {
+                if (currentPage < totalPage) {
+                    jumpToPage(currentPage + 1)
+                }
+            }
+            else if (e.target.className == '') {
+                jumpToPage(e.target.textContent);
+            }
+        });
     }
 
     function loadCourses() {
@@ -291,6 +317,12 @@
                     hide(login);
                 });
         });
+
+        var loginClose = login.getElementsByClassName('close-btn')[0];
+        loginClose.addEventListener('click', function() {
+            hide(login);
+            hide(mask);
+        });
     }
 
     function cardHover() {
@@ -319,7 +351,6 @@
                 card.style.left = e.target.offsetLeft - 10 + 'px';
                 show(card);
             }
-            console.log(e);
         });
 
         card.addEventListener('mouseleave', function() {

@@ -326,22 +326,25 @@
     margin-left: 8px;
     cursor: pointer;
 }
-#main #pagination .page {
+#main #pagination .page div {
     width: 20px;
 }
-#main #pagination .page:hover {
+#main #pagination .page {
+    margin-left: 0;
+}
+#main #pagination .page div:hover {
     color: #fff;
     background-color: #9dd8b1;
 }
-#main #pagination .page.active {
+#main #pagination .page div.active {
     color: #39a030;
 }
-#main #pagination .page.active:hover {
+#main #pagination .page div.active:hover {
     color: #39a030;
     background-color: #fff;
     cursor: default;
 }
-#main #pagination .prev-next {
+#main #pagination .prev, #main #pagination .next {
     width: 30px;
     background-color: #9dd8b1;
     color: white;
